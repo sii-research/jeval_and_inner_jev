@@ -1,14 +1,34 @@
+// BibTeX copy interaction adapted from Academic Project Page Template.
 const copyButton = document.getElementById('copy-citation');
-const citation = document.getElementById('bibtex');
+const bibtex = document.getElementById('bibtex-code');
 
 copyButton?.addEventListener('click', async () => {
+  const label = copyButton.querySelector('.copy-text');
+  const citation = bibtex?.textContent.trim();
+  if (!citation) return;
+
   try {
-    await navigator.clipboard.writeText(citation.textContent.trim());
-    copyButton.textContent = 'Copied!';
-    window.setTimeout(() => { copyButton.textContent = 'Copy BibTeX'; }, 2000);
+    await navigator.clipboard.writeText(citation);
+    copyButton.classList.add('copied');
+    label.textContent = 'Copied!';
   } catch {
-    copyButton.textContent = 'Select text to copy';
-    citation.focus();
-    window.setTimeout(() => { copyButton.textContent = 'Copy BibTeX'; }, 2500);
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(bibtex);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    if (document.execCommand('copy')) {
+      selection.removeAllRanges();
+      copyButton.classList.add('copied');
+      label.textContent = 'Copied!';
+    } else {
+      label.textContent = 'Select to copy';
+      bibtex.focus();
+    }
   }
+
+  window.setTimeout(() => {
+    copyButton.classList.remove('copied');
+    label.textContent = 'Copy';
+  }, 2200);
 });
