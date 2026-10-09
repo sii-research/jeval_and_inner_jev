@@ -41,6 +41,8 @@ h2 { text-align: center; font-size: clamp(1.65rem, 3vw, 2.1rem); letter-spacing:
 h3 { font-size: 1.35rem; margin-bottom: 11px; }
 .section p { font-size: 1.02rem; }
 .section-lead { max-width: 760px; margin: 0 auto 30px; text-align: center; color: var(--muted); }
+#benchmark h2, #results h2, #method h2 { text-align: left; }
+#benchmark .section-lead, #results .section-lead, #method .section-lead { margin-left: 0; margin-right: 0; text-align: left; }
 .figure { margin: 28px auto 0; }
 .figure img { width: 100%; border: 1px solid #edf0f2; border-radius: 4px; }
 .compact-figure { max-width: 850px; }
