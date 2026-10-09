@@ -1,183 +1,62 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f7f8fa" />
-    <meta name="description" content="JEVal benchmarks general decision models across ten domains. InnerJev turns an open-weight language model's reasoning into fast, structured decisions." />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="JEVal & InnerJev — General Decision Models" />
-    <meta property="og:description" content="Benchmarking general decision models and building open models for fast, structured decisions." />
-    <meta property="og:image" content="https://sii-research.github.io/jeval_and_inner_jev/assets/intro.png" />
-    <title>JEVal & InnerJev | General Decision Models</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <div class="shell header-inner">
-        <a class="brand" href="#top" aria-label="JEVal and InnerJev, back to top">
-          <span class="brand-mark" aria-hidden="true">J<span>↗</span></span>
-          <span>JEVal <span class="brand-separator">/</span> InnerJev</span>
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="#overview">Overview</a>
-          <a href="#benchmark">Benchmark</a>
-          <a href="#findings">Findings</a>
-          <a href="#method">Method</a>
-          <a href="#resources">Resources</a>
-        </nav>
-      </div>
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="JEVal benchmarks general decision models; InnerJev brings fast, structured decisions to open models.">
+  <meta property="og:title" content="General Decision Models: Benchmarking and Insights Beyond Jev">
+  <meta property="og:description" content="JEVal, InnerJev, experimental results, and open resources in one place.">
+  <meta property="og:image" content="https://sii-research.github.io/jeval_and_inner_jev/assets/intro.png">
+  <title>General Decision Models · JEVal &amp; InnerJev</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+    <header class="hero container" id="top">
+      <p class="project-label">JEVal &amp; InnerJev</p>
+      <h1>General Decision Models:<br>Benchmarking and Insights Beyond Jev</h1>
+      <p class="authors">Feiyu Duan<sup>1,2,*</sup>, Jiayu Lin<sup>1,2,*</sup>, Jia Wang<sup>1,3,*</sup>, Jun Xiang<sup>2,*</sup>, Jialiang Wu<sup>2</sup>, Xinnong Zhang<sup>1,2</sup>, Hanqi Yan<sup>4</sup>, Siyuan Wang<sup>5</sup>, Zhongyu Wei<sup>1,2,†</sup></p>
+      <p class="affiliations"><sup>1</sup>Shanghai Innovation Institute &nbsp; <sup>2</sup>Fudan University &nbsp; <sup>3</sup>Tongji University<br><sup>4</sup>King's College London &nbsp; <sup>5</sup>Chinese University of Hong Kong<br><small>* Equal contribution &nbsp; † Corresponding author</small></p>
+      <nav class="links" aria-label="Project resources">
+        <a href="https://arxiv.org/pdf/2610.03935">Paper</a><a href="https://arxiv.org/abs/2610.03935">arXiv</a><a href="https://github.com/amazingljy1206/InnerJev">Code</a><a href="https://huggingface.co/datasets/carlosxiang/JEVal">Dataset</a><a href="#resources">Models</a>
+      </nav>
+      <figure class="hero-figure"><img src="assets/intro.png" alt="General intelligence and decisional intelligence as two dimensions, showing where general decision models sit among expert systems, encoder models, and generative LLMs." width="1916" height="821" fetchpriority="high"><figcaption>General intelligence and decisional intelligence meet in general decision models.</figcaption></figure>
     </header>
 
-    <main id="main">
-      <section class="hero shell" id="top" aria-labelledby="hero-title">
-        <div class="hero-kicker"><span class="kicker-line"></span> RESEARCH PROJECT · 2026</div>
-        <h1 id="hero-title">General Decision Models:<br /><em>Benchmarking and Insights</em><br />Beyond Jev</h1>
-        <p class="hero-lead">How far can fast, structured decisions take us? We introduce <strong>JEVal</strong> to map the strengths and limits of general decision models, and <strong>InnerJev</strong> to make this capability open.</p>
+    <section class="container section narrow" id="abstract"><h2>Abstract</h2><p>Many applications need a decision rather than a long generated response. We study <strong>general decisional intelligence</strong>: the ability to make structured choices across tasks and domains without task-specific retraining. Our bilingual benchmark, <strong>JEVal</strong>, contains 11,257 instances from 36 datasets across 10 domains. It evaluates 25 model configurations on decision accuracy and probability quality, then tests how local decisions behave in agent workflows and social simulation. We also introduce <strong>InnerJev-4B</strong> and <strong>InnerJev-27B</strong>, open models that distill reasoning into a first-token decision readout.</p></section>
 
-        <div class="authors" aria-label="Paper authors">
-          <span>Feiyu Duan<sup>1,2,*</sup></span>
-          <span>Jiayu Lin<sup>1,2,*</sup></span>
-          <span>Jia Wang<sup>1,3,*</sup></span>
-          <span>Jun Xiang<sup>2,*</sup></span>
-          <span>Jialiang Wu<sup>2</sup></span>
-          <span>Xinnong Zhang<sup>1,2</sup></span>
-          <span>Hanqi Yan<sup>4</sup></span>
-          <span>Siyuan Wang<sup>5</sup></span>
-          <span>Zhongyu Wei<sup>1,2,†</sup></span>
-        </div>
-        <p class="affiliations"><sup>1</sup>Shanghai Innovation Institute · <sup>2</sup>Fudan University · <sup>3</sup>Tongji University<br /><sup>4</sup>King's College London · <sup>5</sup>Chinese University of Hong Kong<br /><small>* Equal contribution &nbsp; † Corresponding author</small></p>
+    <section class="container section" id="benchmark"><h2>JEVal benchmark</h2><p class="section-lead">One interface for choice, binary, and score decisions across knowledge, reasoning, tools, long context, and applied domains.</p><figure class="figure"><img src="assets/bench.png" alt="JEVal benchmark construction and distribution across ten domains, question types, and input lengths." width="1664" height="741" loading="lazy"><figcaption>JEVal draws 11,257 bilingual instances from 36 source datasets.</figcaption></figure></section>
 
-        <div class="hero-actions" aria-label="Project links">
-          <a class="pill pill-dark" href="https://arxiv.org/pdf/2610.03935" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Paper</a>
-          <a class="pill pill-dark" href="https://arxiv.org/abs/2610.03935" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> arXiv</a>
-          <a class="pill pill-dark" href="https://github.com/amazingljy1206/InnerJev" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Code</a>
-          <a class="pill pill-dark" href="https://huggingface.co/datasets/carlosxiang/JEVal" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span> Dataset</a>
-          <a class="pill pill-dark" href="#resources"><span aria-hidden="true">↗</span> Models</a>
-        </div>
+    <section class="container section" id="results">
+      <h2>Experimental results</h2><p class="section-lead">Strong single-step decisions are possible, but confidence and system-level behavior need separate evaluation.</p>
+      <div class="result-block"><h3>Decision quality on JEVal</h3><p>InnerJev-27B reaches 79.24% accuracy and the lowest expected calibration error (ECE) in the 25-configuration comparison. It is close to the leading thinking LLMs, while specialist domains such as medicine, finance, and law remain harder for decision models.</p>
+        <div class="table-scroll"><table><caption>Overall classification results on 10,938 choice and binary questions. Higher accuracy and lower ECE and raw Brier error are better.</caption><thead><tr><th scope="col">Model</th><th scope="col">Accuracy ↑</th><th scope="col">ECE ↓</th><th scope="col">Brier<sub>raw</sub> ↓</th></tr></thead><tbody>
+          <tr class="highlight"><th scope="row">InnerJev-27B</th><td>79.24%</td><td>0.0149</td><td>0.279</td></tr><tr><th scope="row">InnerJev-4B</th><td>71.92%</td><td>0.0843</td><td>0.383</td></tr><tr><th scope="row">Jev</th><td>78.38%</td><td>0.0532</td><td>0.287</td></tr><tr><th scope="row">Qwen3.8-27B · thinking</th><td>79.49%</td><td>0.1005</td><td>0.319</td></tr><tr><th scope="row">GLM-5.3-Flash · thinking</th><td>80.37%</td><td>0.0784</td><td>0.316</td></tr><tr><th scope="row">GPT-6-Luna · non-thinking</th><td>80.93%</td><td>0.1159</td><td>0.297</td></tr>
+        </tbody></table></div>
+        <figure class="figure"><img src="assets/domain_metrics.png" alt="Accuracy, calibration, and raw Brier error across JEVal's ten domains for decision models and generative LLMs." loading="lazy"><figcaption>Domain-level results for all 25 configurations. See the paper for the full model table and evaluation protocol.</figcaption></figure>
+      </div>
+      <div class="result-block"><h3>Probability estimates need scrutiny</h3><p>Jev often selects the most likely option on synthetic probability tasks, yet its distribution is too concentrated: on prior items, it assigns the true mode 89.35% probability on average, compared with 35.60% in the known distribution. Ranking an option correctly does not ensure the probabilities are faithful.</p><figure class="figure compact-figure"><img src="assets/probability_concentration.png" alt="Comparison of Jev's probability concentration with the true prior and posterior distributions." loading="lazy"><figcaption>Probability concentration on known prior and posterior distributions.</figcaption></figure></div>
+      <div class="result-block"><h3>Agent workflows: faster, with lower success</h3><p>In τ-bench, Jev chooses the next tool or response action while the same base LLM supplies arguments or a user-facing answer. Median episode time falls, but end-to-end success falls too.</p><div class="table-scroll"><table><caption>Overall τ-bench results across Retail and Airline.</caption><thead><tr><th scope="col">Agent</th><th scope="col">Success ↑</th><th scope="col">Median time ↓</th><th scope="col">P95 time ↓</th></tr></thead><tbody><tr><th scope="row">Base LLM</th><td>77.6%</td><td>267.1 s</td><td>695.5 s</td></tr><tr class="highlight"><th scope="row">Jev + LLM</th><td>66.1%</td><td>160.6 s</td><td>816.0 s</td></tr></tbody></table></div></div>
+      <div class="result-block"><h3>Social simulation at scale</h3><p>On 277,500 SocioBench respondent–question pairs, InnerJev-27B attains 39.87% accuracy at 8.36 seconds per item, close to thinking DeepSeek-V4-Flash-0731 at 40.41% and 211.65 seconds. In ElectionSim, it predicts 47 of 51 state winners and 12 of 15 battleground winners; vote-share errors and directional bias still limit aggregate fidelity.</p><figure class="figure"><img src="assets/electionsim_map.png" alt="ElectionSim state-level predicted winners and vote-share errors for InnerJev-27B." loading="lazy"><figcaption>ElectionSim results show broad directional agreement alongside meaningful vote-share error.</figcaption></figure></div>
+    </section>
 
-        <figure class="hero-figure">
-          <img src="assets/intro.png" alt="Conceptual diagram comparing general intelligence and decisional intelligence, and showing the evolution from expert systems and task-specific models to language models and Jev." width="1916" height="821" fetchpriority="high" />
-          <figcaption>Two complementary capabilities, and the emerging space of general decisional intelligence.</figcaption>
-        </figure>
-      </section>
+    <section class="container section" id="method"><h2>InnerJev</h2><p class="section-lead">A first-token readout turns a language model's option scores into a decision. Reasoning-to-Readout Self-Distillation teaches that readout to approximate the model's answer after reasoning.</p><figure class="figure"><img src="assets/method.png" alt="InnerJev first-token decision readout and reasoning-to-readout self-distillation process." width="1957" height="804" loading="lazy"><figcaption>InnerJev-4B and InnerJev-27B distill reasoning into a single-pass decision.</figcaption></figure><figure class="figure"><img src="assets/pareto_frontier_v2.png" alt="JEVal accuracy against mean latency for short inputs, showing InnerJev-4B and InnerJev-27B on the Pareto frontier." loading="lazy"><figcaption>Accuracy–latency comparison for inputs up to 1K tokens. Open models run on one H100; hosted Jev includes network transport, so timings are not matched-hardware measurements.</figcaption></figure></section>
 
-      <section class="stats-band" aria-label="JEVal at a glance">
-        <div class="shell stats-grid">
-          <div><strong>11,257</strong><span>bilingual instances</span></div>
-          <div><strong>36</strong><span>source datasets</span></div>
-          <div><strong>10</strong><span>application domains</span></div>
-          <div><strong>25</strong><span>model configurations</span></div>
-        </div>
-      </section>
+    <section class="container section narrow" id="resources"><h2>Resources</h2><ul class="resource-list">
+      <li><a href="https://arxiv.org/abs/2610.03935">Paper and arXiv <span>↗</span></a></li><li><a href="https://github.com/amazingljy1206/InnerJev">Code <span>↗</span></a></li><li><a href="https://huggingface.co/datasets/carlosxiang/JEVal">JEVal dataset <span>↗</span></a></li><li><a href="https://huggingface.co/jylin001206/InnerJev-4B-Full">InnerJev-4B · full weights <span>↗</span></a></li><li><a href="https://huggingface.co/jylin001206/InnerJev-27B-Full">InnerJev-27B · full weights <span>↗</span></a></li><li><a href="https://huggingface.co/jylin001206/InnerJev-4B-LoRA">InnerJev-4B · LoRA <span>↗</span></a></li><li><a href="https://huggingface.co/jylin001206/InnerJev-27B-LoRA">InnerJev-27B · LoRA <span>↗</span></a></li><li><a href="https://huggingface.co/datasets/jylin001206/InnerJev-4B-Training-Data">4B training data <span>↗</span></a></li><li><a href="https://huggingface.co/datasets/jylin001206/InnerJev-27B-Training-Data">27B training data <span>↗</span></a></li>
+    </ul></section>
 
-      <section class="section shell" id="overview">
-        <div class="section-heading">
-          <p class="eyebrow">01 / THE IDEA</p>
-          <h2>From general intelligence<br />to <em>general decisions.</em></h2>
-        </div>
-        <div class="two-column-copy">
-          <p>Language models adapt to many tasks through natural language. Yet many real systems ultimately need a choice: classify an input, rank candidates, verify a claim, or select the next action.</p>
-          <p>We call the ability to make effective structured decisions across tasks and domains, without task-specific retraining, <strong>general decisional intelligence</strong>. Jev explores this space; our work asks where its capabilities hold and where they break.</p>
-        </div>
-      </section>
-
-      <section class="section section-tinted" id="benchmark">
-        <div class="shell">
-          <div class="section-heading">
-            <p class="eyebrow">02 / THE BENCHMARK</p>
-            <h2>Meet <em>JEVal.</em></h2>
-            <p class="section-intro">A bilingual evaluation of decision making across knowledge, reasoning, long context, tools, and real-world domains.</p>
-          </div>
-          <figure class="wide-figure">
-            <img src="assets/bench.png" alt="JEVal benchmark overview: sources across ten domains are processed into unified choice, binary, and score tasks; the figure also shows domain shares and input lengths." width="1664" height="741" loading="lazy" />
-            <figcaption>JEVal unifies diverse tasks under a shared state, instruction, and candidate decision interface.</figcaption>
-          </figure>
-          <div class="format-grid">
-            <article><span class="format-number">01</span><h3>Choice</h3><p>Select among candidate outcomes.</p></article>
-            <article><span class="format-number">02</span><h3>Binary</h3><p>Make a yes/no judgment.</p></article>
-            <article><span class="format-number">03</span><h3>Score</h3><p>Assign a value on a discrete scale.</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section shell" id="findings">
-        <div class="section-heading">
-          <p class="eyebrow">03 / WHAT WE LEARNED</p>
-          <h2>Fast decisions have<br /><em>real boundaries.</em></h2>
-        </div>
-        <div class="finding-grid">
-          <article class="finding-card">
-            <span class="finding-index">01 / LOCAL DECISIONS</span>
-            <h3>Strong when evidence is in view.</h3>
-            <p>Leading decision models are competitive on tasks whose evidence is provided in the input. Specialist knowledge and faithful uncertainty estimation remain harder.</p>
-          </article>
-          <article class="finding-card">
-            <span class="finding-index">02 / AGENT WORKFLOWS</span>
-            <h3>Faster steps do not guarantee a better journey.</h3>
-            <p>In long-horizon agent tasks, faster local decisions reduce median episode time, while task success can fall as errors accumulate.</p>
-          </article>
-          <article class="finding-card">
-            <span class="finding-index">03 / SOCIAL SIMULATION</span>
-            <h3>Scale exposes different errors.</h3>
-            <p>Decision models can support large simulations at lower inference cost, but user profiling and aggregate estimates still show meaningful gaps and bias.</p>
-          </article>
-        </div>
-        <p class="paper-note">These findings summarize the analyses in the <a href="https://arxiv.org/abs/2610.03935" target="_blank" rel="noopener noreferrer">paper ↗</a>.</p>
-      </section>
-
-      <section class="section section-method" id="method">
-        <div class="shell">
-          <div class="section-heading">
-            <p class="eyebrow">04 / THE OPEN MODELS</p>
-            <h2>Introducing <em>InnerJev.</em></h2>
-            <p class="section-intro">Can an open-weight language model turn its own reasoning into a fast first-token decision?</p>
-          </div>
-          <div class="method-steps">
-            <p><span>1</span> Read the scores of valid answer labels at the first answer token.</p>
-            <p><span>2</span> Let the model reason, then use its final answer distribution as a teacher.</p>
-            <p><span>3</span> Distill that distribution into a single-pass decision readout.</p>
-          </div>
-          <figure class="wide-figure method-figure">
-            <img src="assets/method.png" alt="InnerJev method diagram: first-token decision readout for choice, binary, and score tasks, followed by reasoning-to-readout self-distillation." width="1957" height="804" loading="lazy" />
-            <figcaption>InnerJev-4B and InnerJev-27B learn fast decisions from their own reasoning.</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section class="section shell" id="resources">
-        <div class="section-heading">
-          <p class="eyebrow">05 / EXPLORE THE PROJECT</p>
-          <h2>Everything in <em>one place.</em></h2>
-        </div>
-        <div class="resource-grid">
-          <a class="resource-card" href="https://arxiv.org/abs/2610.03935" target="_blank" rel="noopener noreferrer"><span>01 / PUBLICATION</span><strong>Paper & arXiv</strong><small>Read the full study</small><b aria-hidden="true">↗</b></a>
-          <a class="resource-card" href="https://github.com/amazingljy1206/InnerJev" target="_blank" rel="noopener noreferrer"><span>02 / IMPLEMENTATION</span><strong>InnerJev code</strong><small>Training and inference</small><b aria-hidden="true">↗</b></a>
-          <a class="resource-card" href="https://huggingface.co/datasets/carlosxiang/JEVal" target="_blank" rel="noopener noreferrer"><span>03 / BENCHMARK</span><strong>JEVal dataset</strong><small>Bilingual evaluation data</small><b aria-hidden="true">↗</b></a>
-          <a class="resource-card" href="https://huggingface.co/jylin001206/InnerJev-4B-Full" target="_blank" rel="noopener noreferrer"><span>04 / MODEL</span><strong>InnerJev-4B</strong><small>Full-rank weights</small><b aria-hidden="true">↗</b></a>
-          <a class="resource-card" href="https://huggingface.co/jylin001206/InnerJev-27B-Full" target="_blank" rel="noopener noreferrer"><span>05 / MODEL</span><strong>InnerJev-27B</strong><small>Full-rank weights</small><b aria-hidden="true">↗</b></a>
-          <div class="resource-card resource-card-more"><span>06 / MORE RESOURCES</span><strong>LoRA & training data</strong><div class="resource-links"><a href="https://huggingface.co/jylin001206/InnerJev-4B-LoRA" target="_blank" rel="noopener noreferrer">4B LoRA ↗</a><a href="https://huggingface.co/jylin001206/InnerJev-27B-LoRA" target="_blank" rel="noopener noreferrer">27B LoRA ↗</a><a href="https://huggingface.co/datasets/jylin001206/InnerJev-4B-Training-Data" target="_blank" rel="noopener noreferrer">4B data ↗</a><a href="https://huggingface.co/datasets/jylin001206/InnerJev-27B-Training-Data" target="_blank" rel="noopener noreferrer">27B data ↗</a></div></div>
-        </div>
-      </section>
-
-      <section class="citation-section" id="citation">
-        <div class="shell citation-inner">
-          <div><p class="eyebrow">CITE THE WORK</p><h2>Build on the<br /><em>research.</em></h2><p>If JEVal or InnerJev helps your work, please cite the paper.</p></div>
-          <div class="citation-box"><div class="citation-top"><span>BibTeX</span><button type="button" id="copy-citation" aria-label="Copy BibTeX citation">Copy citation</button></div><pre id="bibtex" tabindex="-1">@misc{duan2026generaldecisionmodels,
+    <section class="container section narrow citation" id="bibtex-section"><h2>BibTeX</h2><div class="citation-header"><p>If this project is useful, please cite the paper.</p><button type="button" id="copy-citation">Copy BibTeX</button></div><pre id="bibtex" tabindex="-1">@misc{duan2026generaldecisionmodels,
   title={General Decision Models: Benchmarking and Insights Beyond Jev},
   author={Duan, Feiyu and Lin, Jiayu and Wang, Jia and Xiang, Jun and Wu, Jialiang and Zhang, Xinnong and Yan, Hanqi and Wang, Siyuan and Wei, Zhongyu},
   year={2026},
   eprint={2610.03935},
   archivePrefix={arXiv},
   primaryClass={cs.CL}
-}</pre></div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer"><div class="shell footer-inner"><span>JEVal & InnerJev · General Decision Models</span><a href="#top">Back to top ↑</a></div></footer>
-    <script src="script.js" defer></script>
-  </body>
+}</pre></section>
+  </main>
+  <footer class="container footer">JEVal &amp; InnerJev <a href="#top">Back to top ↑</a></footer>
+  <script src="script.js" defer></script>
+</body>
 </html>
