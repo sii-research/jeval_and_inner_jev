@@ -8,32 +8,21 @@
   --border-color: #dfe7f0;
 }
 
-.skip-link { position: absolute; top: -4rem; left: 1rem; z-index: 100; padding: .5rem .8rem; background: #17263a; color: #fff; }
+.skip-link { position: absolute; top: -4rem; left: 1rem; z-index: 100; padding: .5rem .8rem; background: #1e293b; color: #fff; }
 .skip-link:focus { top: .5rem; color: #fff; }
-html { scroll-padding-top: 5rem; }
 a:focus-visible, button:focus-visible { outline: 3px solid #62a9f5; outline-offset: 3px; }
 
-.site-header { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--border-color); backdrop-filter: blur(12px); }
-.site-nav { min-height: 4.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: .6rem 1.25rem; }
-.site-home { flex: none; color: var(--text-primary); font-size: 1.45rem; font-weight: 700; line-height: 1; }
-.site-home:hover { color: var(--primary-color); }
-.site-nav-links { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; gap: .4rem 1.35rem; }
-.site-nav-links a { color: var(--text-secondary); font-size: .88rem; font-weight: 600; }
-.site-nav-links a:hover { color: var(--primary-color); }
-
-.project-hero { background: #fff; border-bottom: 1px solid var(--border-color); padding: clamp(3.5rem, 7vw, 5.5rem) 1.5rem 3.5rem; text-align: center; }
-.section-kicker { margin: 0 0 .7rem; color: var(--primary-color); font-size: .78rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
-.project-hero h1 { max-width: 900px; margin: 0 auto 1.6rem; color: var(--text-primary); font-size: clamp(2.1rem, 4.3vw, 3.5rem); line-height: 1.16; letter-spacing: -.035em; font-weight: 800; }
-.publication-authors { max-width: 920px; margin: 0 auto .7rem; color: var(--primary-color); font-size: clamp(1rem, 1.65vw, 1.22rem); line-height: 1.8; }
-.publication-authors .author-block { display: inline-block; margin-right: .18rem; white-space: nowrap; }
+/* Restore the exact pre-redesign publication header layout. */
+.publication-header { --primary-color: #2563eb; --text-primary: #1e293b; --text-secondary: #64748b; color: #1e293b; }
+.publication-header .hero-body { padding-bottom: 2.5rem; }
+.publication-title { font-size: clamp(2rem, 4.4vw, 3.5rem) !important; line-height: 1.17 !important; }
+.publication-authors { margin-bottom: .75rem; line-height: 1.8; }
+.publication-authors .author-block { margin-right: .25rem; }
 .publication-authors sup { color: var(--text-secondary); font-size: .65em; }
 .publication-affiliations { display: flex; flex-wrap: wrap; justify-content: center; gap: .15rem 1.1rem; color: var(--text-secondary); font-size: .95rem; }
-.publication-affiliations sup { margin-right: .1rem; }
-.contribution-note { margin: .65rem 0 1.35rem; color: var(--text-secondary); font-size: .85rem; }
-.hero-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .7rem; }
-.hero-actions .button { min-height: 2.8rem; padding: 0 1.3rem; border-radius: 999px !important; font-size: .94rem; }
-.hero-actions .button.is-light { border: 1px solid var(--border-color) !important; background: #f5f8fc !important; color: var(--text-primary) !important; }
-.hero-actions .button.is-light:hover { background: #eaf2fa !important; }
+.contribution-note { margin: .65rem 0 1.25rem; color: var(--text-secondary); font-size: .85rem; }
+.publication-links .button { margin: .25rem !important; }
+.section-kicker { margin: 0 0 .7rem; color: var(--primary-color); font-size: .78rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
 
 .project-section { padding: 4rem 1.5rem; }
 .project-section .title.is-3 { text-align: left; margin-bottom: 1rem; }
@@ -77,11 +66,6 @@ a:focus-visible, button:focus-visible { outline: 3px solid #62a9f5; outline-offs
 .footer .content { font-size: .85rem; }
 
 @media (max-width: 768px) {
-  .site-nav { align-items: flex-start; flex-direction: column; gap: .55rem; padding: .75rem 1rem; }
-  .site-nav-links { justify-content: flex-start; gap: .5rem 1rem; }
-  .site-nav-links a { font-size: .8rem; }
-  .project-hero { padding: 3.5rem 1rem 2.5rem; }
-  .publication-affiliations { gap: .2rem .7rem; font-size: .84rem; }
   .project-section { padding: 3rem 1rem; }
   .overview-heading { grid-template-columns: 1fr; gap: .3rem; }
   .resource-panel { padding: 1.2rem; }
