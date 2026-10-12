@@ -105,7 +105,6 @@
         <h2 class="title is-3">SII-Decision</h2>
         <div class="content section-intro"><p>The First-Token Decision Readout restricts an open-weight LLM's next-token probabilities to valid option labels, producing a structured decision in one forward pass. Reasoning-to-Readout Self-Distillation then teaches this readout to match the distribution the same model reaches after reasoning, without gold labels or a stronger teacher.</p></div>
         <figure class="paper-figure"><img src="assets/method_sii_decision.png" alt="SII-Decision first-token decision readout for choice, binary, and score tasks, followed by reasoning-to-readout self-distillation." width="2400" height="955" loading="lazy"><figcaption>The same readout handles all three JEVal formats; self-distillation transfers post-reasoning decisions to the first token.</figcaption></figure>
-        <figure class="paper-figure"><img src="assets/pareto_frontier_v3_sii_decision.png" alt="JEVal accuracy against short-input latency for SII-Decision and other decision models." loading="lazy"><figcaption>Accuracy–latency comparison for inputs up to 1K tokens. Open models run on one H100; hosted Jev includes network transport.</figcaption></figure>
       </div>
     </section>
 
@@ -125,6 +124,7 @@
             <tr><th scope="row">GLM-5.3-Flash · thinking</th><td>80.37%</td><td>0.0784</td><td>0.316</td></tr>
             <tr><th scope="row">GPT-6-Luna · non-thinking</th><td>80.93%</td><td>0.1159</td><td>0.297</td></tr>
           </tbody></table></div>
+          <figure class="paper-figure"><img src="assets/pareto_frontier_v3_sii_decision.png" alt="JEVal accuracy against short-input latency for SII-Decision and other decision models." loading="lazy"><figcaption>Accuracy–latency comparison for inputs up to 1K tokens. Open models run on one H100; hosted Jev includes network transport.</figcaption></figure>
           <figure class="paper-figure"><img src="assets/domain_metrics_sii_decision.png" alt="Accuracy, calibration, and raw Brier error across JEVal's ten domains for 25 configurations." loading="lazy"><figcaption>Domain-level accuracy and probability quality across all model configurations.</figcaption></figure>
         </article>
 
