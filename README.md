@@ -1,6 +1,6 @@
-# JEVal & InnerJev
+# JEVal & SII-Decision
 
-Project page for [General Decision Models: Benchmarking and Insights Beyond Jev](https://arxiv.org/abs/2610.03935). It brings together the JEVal benchmark, InnerJev models, experimental results, and released resources.
+Project page for [General Decision Models: Benchmarking and Insights Beyond Jev](https://arxiv.org/abs/2610.03935). It brings together the JEVal benchmark, SII-Decision models, experimental results, and released resources.
 
 **Website:** https://sii-research.github.io/jeval_and_inner_jev/
 

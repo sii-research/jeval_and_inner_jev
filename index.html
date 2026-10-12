@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#2563eb">
-  <meta name="description" content="JEVal benchmarks general decision models across ten domains; InnerJev distills reasoning into fast, open-weight decisions.">
-  <meta name="keywords" content="general decision models, JEVal, InnerJev, decision making, benchmarking, self-distillation">
+  <meta name="description" content="JEVal benchmarks general decision models across ten domains; SII-Decision distills reasoning into fast, open-weight decisions.">
+  <meta name="keywords" content="general decision models, JEVal, SII-Decision, decision making, benchmarking, self-distillation">
   <meta name="author" content="Feiyu Duan, Jiayu Lin, Jia Wang, Jun Xiang, Jialiang Wu, Xinnong Zhang, Hanqi Yan, Siyuan Wang, Zhongyu Wei">
   <meta property="og:type" content="article">
   <meta property="og:title" content="General Decision Models: Benchmarking and Insights Beyond Jev">
-  <meta property="og:description" content="JEVal, InnerJev, experimental results, and open resources.">
+  <meta property="og:description" content="JEVal, SII-Decision, experimental results, and open resources.">
   <meta property="og:url" content="https://sii-research.github.io/jeval_and_inner_jev/">
   <meta property="og:image" content="https://sii-research.github.io/jeval_and_inner_jev/assets/intro.png">
   <meta name="citation_title" content="General Decision Models: Benchmarking and Insights Beyond Jev">
@@ -24,7 +24,7 @@
   <meta name="citation_author" content="Wei, Zhongyu">
   <meta name="citation_publication_date" content="2026">
   <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2610.03935">
-  <title>General Decision Models | JEVal &amp; InnerJev</title>
+  <title>General Decision Models | JEVal &amp; SII-Decision</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
@@ -93,7 +93,7 @@ To study this, we introduce <strong>JEVal</strong>, a bilingual benchmark compri
 Our results show that
 (1) general decision models are most competitive when decisions can be resolved from available evidence, but weaken when they require specialist knowledge or faithful uncertainty estimation: they can often identify the most likely outcome while substantially overstating its probability.
 (2) In more dynamic and realistic systems involving long-horizon, multi-step interactions, the advantages of fast local decision making are offset by reliability failures at the system level. on τ-bench, faster local decisions reduce median episode time but lower task success as decision errors accumulate over long trajectories. (3) In large-scale social simulation, decision models approach strong generative LLMs on individual response prediction at substantially lower inference cost, yet remain weaker in user profiling and exhibit larger aggregate estimation errors and systematic bias.
-Finally, we propose <strong>InnerJev-4B</strong> and <strong>InnerJev-27B</strong>, which internalize an open-weight LLM's own reasoning into a single-pass first-token decision through <strong>Reasoning-to-Readout Self-Distillation</strong>, with InnerJev-27B performing on par with Jev on JEVal while answering a typical query in about 0.1 s.</p>
+Finally, we propose <strong>SII-Decision-4B</strong> and <strong>SII-Decision-27B</strong>, which internalize an open-weight LLM's own reasoning into a single-pass first-token decision through <strong>Reasoning-to-Readout Self-Distillation</strong>, with SII-Decision-27B performing on par with Jev on JEVal while answering a typical query in about 0.1 s.</p>
             </div>
           </div>
         </div>
@@ -115,10 +115,10 @@ Finally, we propose <strong>InnerJev-4B</strong> and <strong>InnerJev-27B</stron
 
         <article class="result-block">
           <h3 class="title is-4">Decision quality on JEVal</h3>
-          <div class="content"><p>The strongest decision models approach leading thinking LLMs on single-step accuracy. InnerJev-27B reaches 79.24% accuracy and the lowest expected calibration error (ECE) of the 25 configurations. Across domains, decision models are strongest when the evidence is available in the input; the best generative LLMs retain an advantage in medicine, finance, and law.</p></div>
+          <div class="content"><p>The strongest decision models approach leading thinking LLMs on single-step accuracy. SII-Decision-27B reaches 79.24% accuracy and the lowest expected calibration error (ECE) of the 25 configurations. Across domains, decision models are strongest when the evidence is available in the input; the best generative LLMs retain an advantage in medicine, finance, and law.</p></div>
           <div class="table-container"><table class="table is-fullwidth is-striped result-table"><caption>Overall results on 10,938 choice and binary questions; higher accuracy and lower errors are better.</caption><thead><tr><th scope="col">Model</th><th scope="col">Accuracy ↑</th><th scope="col">ECE ↓</th><th scope="col">Brier<sub>raw</sub> ↓</th></tr></thead><tbody>
-            <tr class="ours"><th scope="row">InnerJev-27B</th><td>79.24%</td><td>0.0149</td><td>0.279</td></tr>
-            <tr class="ours"><th scope="row">InnerJev-4B</th><td>71.92%</td><td>0.0843</td><td>0.383</td></tr>
+            <tr class="ours"><th scope="row">SII-Decision-27B</th><td>79.24%</td><td>0.0149</td><td>0.279</td></tr>
+            <tr class="ours"><th scope="row">SII-Decision-4B</th><td>71.92%</td><td>0.0843</td><td>0.383</td></tr>
             <tr><th scope="row">Jev</th><td>78.38%</td><td>0.0532</td><td>0.287</td></tr>
             <tr><th scope="row">Qwen3.8-27B · thinking</th><td>79.49%</td><td>0.1005</td><td>0.319</td></tr>
             <tr><th scope="row">GLM-5.3-Flash · thinking</th><td>80.37%</td><td>0.0784</td><td>0.316</td></tr>
@@ -141,18 +141,18 @@ Finally, we propose <strong>InnerJev-4B</strong> and <strong>InnerJev-27B</stron
 
         <article class="result-block">
           <h3 class="title is-4">Social simulation at scale</h3>
-          <div class="content"><p>On 277,500 SocioBench respondent–question pairs, InnerJev-27B attains 39.87% accuracy at 8.36 seconds per item, close to thinking DeepSeek-V4-Flash-0731 at 40.41% and 211.65 seconds. In ElectionSim, about 330,000 simulated voters yield correct calls for 47 of 51 states and 12 of 15 battleground states. Vote-share errors are about twice those of the original generative pipeline, and the simulation overestimates the Democratic share.</p></div>
-          <figure class="paper-figure"><img src="assets/electionsim_map.png" alt="Actual and simulated 2024 election maps, with four incorrectly called states marked." loading="lazy"><figcaption>InnerJev-27B preserves most state-level winners but misses four Trump-won states.</figcaption></figure>
+          <div class="content"><p>On 277,500 SocioBench respondent–question pairs, SII-Decision-27B attains 39.87% accuracy at 8.36 seconds per item, close to thinking DeepSeek-V4-Flash-0731 at 40.41% and 211.65 seconds. In ElectionSim, about 330,000 simulated voters yield correct calls for 47 of 51 states and 12 of 15 battleground states. Vote-share errors are about twice those of the original generative pipeline, and the simulation overestimates the Democratic share.</p></div>
+          <figure class="paper-figure"><img src="assets/electionsim_map.png" alt="Actual and simulated 2024 election maps, with four incorrectly called states marked." loading="lazy"><figcaption>SII-Decision-27B preserves most state-level winners but misses four Trump-won states.</figcaption></figure>
         </article>
       </div>
     </section>
 
     <section class="section project-section" id="method">
       <div class="container is-max-desktop">
-        <h2 class="title is-3">InnerJev</h2>
+        <h2 class="title is-3">SII-Decision</h2>
         <div class="content section-intro"><p>The First-Token Decision Readout restricts an open-weight LLM's next-token probabilities to valid option labels, producing a structured decision in one forward pass. Reasoning-to-Readout Self-Distillation then teaches this readout to match the distribution the same model reaches after reasoning, without gold labels or a stronger teacher.</p></div>
-        <figure class="paper-figure"><img src="assets/method.png" alt="InnerJev first-token decision readout for choice, binary, and score tasks, followed by reasoning-to-readout self-distillation." width="2310" height="918" loading="lazy"><figcaption>The same readout handles all three JEVal formats; self-distillation transfers post-reasoning decisions to the first token.</figcaption></figure>
-        <figure class="paper-figure"><img src="assets/pareto_frontier_v2.png" alt="JEVal accuracy against short-input latency for InnerJev and other decision models." loading="lazy"><figcaption>Accuracy–latency comparison for inputs up to 1K tokens. Open models run on one H100; hosted Jev includes network transport.</figcaption></figure>
+        <figure class="paper-figure"><img src="assets/method.png" alt="SII-Decision first-token decision readout for choice, binary, and score tasks, followed by reasoning-to-readout self-distillation." width="2310" height="918" loading="lazy"><figcaption>The same readout handles all three JEVal formats; self-distillation transfers post-reasoning decisions to the first token.</figcaption></figure>
+        <figure class="paper-figure"><img src="assets/pareto_frontier_v2.png" alt="JEVal accuracy against short-input latency for SII-Decision and other decision models." loading="lazy"><figcaption>Accuracy–latency comparison for inputs up to 1K tokens. Open models run on one H100; hosted Jev includes network transport.</figcaption></figure>
       </div>
     </section>
 
@@ -161,9 +161,9 @@ Finally, we propose <strong>InnerJev-4B</strong> and <strong>InnerJev-27B</stron
         <h2 class="title is-3">Resources</h2>
         <div class="content section-intro"><p>Code, benchmark data, model weights, and training data released with the paper.</p></div>
         <div class="columns is-multiline resource-grid">
-          <div class="column is-half"><div class="resource-panel"><h3 class="title is-5">Code &amp; benchmark</h3><a href="https://github.com/amazingljy1206/InnerJev">InnerJev code <span>↗</span></a><a href="https://huggingface.co/datasets/carlosxiang/JEVal">JEVal dataset <span>↗</span></a></div></div>
-          <div class="column is-half"><div class="resource-panel"><h3 class="title is-5">Model weights</h3><div class="resource-row"><strong>InnerJev-4B</strong><span><a href="https://huggingface.co/jylin001206/InnerJev-4B-Full">Full-rank ↗</a><a href="https://huggingface.co/jylin001206/InnerJev-4B-LoRA">LoRA ↗</a></span></div><div class="resource-row"><strong>InnerJev-27B</strong><span><a href="https://huggingface.co/jylin001206/InnerJev-27B-Full">Full-rank ↗</a><a href="https://huggingface.co/jylin001206/InnerJev-27B-LoRA">LoRA ↗</a></span></div></div></div>
-          <div class="column is-full"><div class="resource-panel"><h3 class="title is-5">Training data</h3><div class="training-links"><a href="https://huggingface.co/datasets/jylin001206/InnerJev-4B-Training-Data">InnerJev-4B training data ↗</a><a href="https://huggingface.co/datasets/jylin001206/InnerJev-27B-Training-Data">InnerJev-27B training data ↗</a></div></div></div>
+          <div class="column is-half"><div class="resource-panel"><h3 class="title is-5">Code &amp; benchmark</h3><a href="https://github.com/amazingljy1206/InnerJev">SII-Decision code <span>↗</span></a><a href="https://huggingface.co/datasets/carlosxiang/JEVal">JEVal dataset <span>↗</span></a></div></div>
+          <div class="column is-half"><div class="resource-panel"><h3 class="title is-5">Model weights</h3><div class="resource-row"><strong>SII-Decision-4B</strong><span><a href="https://huggingface.co/jylin001206/InnerJev-4B-Full">Full-rank ↗</a><a href="https://huggingface.co/jylin001206/InnerJev-4B-LoRA">LoRA ↗</a></span></div><div class="resource-row"><strong>SII-Decision-27B</strong><span><a href="https://huggingface.co/jylin001206/InnerJev-27B-Full">Full-rank ↗</a><a href="https://huggingface.co/jylin001206/InnerJev-27B-LoRA">LoRA ↗</a></span></div></div></div>
+          <div class="column is-full"><div class="resource-panel"><h3 class="title is-5">Training data</h3><div class="training-links"><a href="https://huggingface.co/datasets/jylin001206/InnerJev-4B-Training-Data">SII-Decision-4B training data ↗</a><a href="https://huggingface.co/datasets/jylin001206/InnerJev-27B-Training-Data">SII-Decision-27B training data ↗</a></div></div></div>
         </div>
       </div>
     </section>
@@ -186,7 +186,7 @@ Finally, we propose <strong>InnerJev-4B</strong> and <strong>InnerJev-27B</stron
 
   <footer class="footer">
     <div class="container is-max-desktop content">
-      <p>JEVal &amp; InnerJev · Built with the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>, adapted from <a href="https://nerfies.github.io/">Nerfies</a>. Template styling is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+      <p>JEVal &amp; SII-Decision · Built with the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>, adapted from <a href="https://nerfies.github.io/">Nerfies</a>. Template styling is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
     </div>
   </footer>
 </body>
