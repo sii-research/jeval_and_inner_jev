@@ -77,6 +77,14 @@ html { scroll-padding-top: 4.5rem; }
 .footer { padding-top: 2rem; padding-bottom: 2rem; }
 .footer .content { font-size: .85rem; }
 
+@media (min-width: 1024px) {
+  .resource-row { flex-wrap: nowrap; align-items: center; }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .resource-grid > .column { width: 100%; }
+}
+
 @media (max-width: 768px) {
   .section-nav { gap: .9rem; padding: 0 1rem; }
   .nav-home { font-size: .88rem; }
